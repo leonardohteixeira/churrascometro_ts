@@ -2,6 +2,8 @@ import { useLocation, useNavigate } from "react-router-dom"
 
 import { Alimento, nomesAlimentos, quantidadePessoas } from "../types"
 
+import styles from "./ResultadoChurrasco.module.css"
+
 type ResultadosChurrasco = {
   pessoas: number,
   alimentosSelecionados: Alimento[],
@@ -24,12 +26,12 @@ const ResultadoChurrasco = () => {
   }
 
   return (
-    <div>
-      <h2>Resultado para {state.pessoas} pessoas:</h2>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Resultado para {state.pessoas} pessoas:</h2>
       {state.alimentosSelecionados.map((alimento) => (
-        <p key={alimento}>{nomesAlimentos[alimento]}: {totalPorAlimento[alimento]} kg</p>
+        <p key={alimento} className={styles.resultText}>{nomesAlimentos[alimento]}: {totalPorAlimento[alimento]} kg</p>
       ))}
-      <button onClick={reiniciar}>Reiniciar</button>
+      <button onClick={reiniciar} className={styles.resetButton}>Reiniciar</button>
     </div>
   )
 }
